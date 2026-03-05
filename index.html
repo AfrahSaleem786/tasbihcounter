@@ -1,33 +1,88 @@
 ﻿<!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
 
-    <title>Online Tasbih Counter – Free Digital Tasbih for Dhikr</title>
+<meta charset="UTF-8">
 
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <link rel="stylesheet" href="style.css">
+<meta name="description"
+content="Free online Tasbih counter for daily dhikr. Count SubhanAllah, Alhamdulillah and Allahu Akbar easily.">
+
+<meta name="keywords"
+content="tasbih counter, dhikr counter, digital tasbih, online tasbih">
+
+<title>Online Tasbih Counter – Free Digital Tasbih for Dhikr</title>
+
+<link rel="stylesheet" href="style.css">
 
 </head>
 
+
 <body class="dark">
 
-    <div class="container">
+<div class="container">
 
-        <h1>🕌 Tasbih Counter</h1>
+<h1>📿 Online Tasbih Counter</h1>
 
-        <div id="counter">0</div>
+<div id="counter">0</div>
 
-        <button id="countBtn">+ Count</button>
+<div id="targetStatus" aria-live="polite"></div>
 
-        <button id="resetBtn">Reset</button>
 
-        <button id="modeBtn">Dark Mode</button>
+<!-- MAIN CONTROLS -->
+<div class="controls">
 
-    </div>
+<button id="minusBtn" aria-label="Decrease count">−</button>
 
-    <script src="script.js"></script>
+<button id="countBtn" aria-label="Increase count">+1</button>
+
+<button id="resetBtn" aria-label="Reset count">Reset</button>
+
+<button id="modeBtn" aria-label="Toggle dark or light mode">Dark Mode</button>
+
+</div>
+
+<div class="settings">
+<label class="toggle">
+<input id="vibrationToggle" type="checkbox">
+<span>Vibration</span>
+</label>
+
+<label class="toggle">
+<input id="stopAtTargetToggle" type="checkbox">
+<span>Stop at target</span>
+</label>
+</div>
+
+
+<!-- PRESET TARGET BUTTONS -->
+<div class="presets">
+
+<button id="preset33" type="button">33</button>
+
+<button id="preset99" type="button">99</button>
+
+<button id="preset100" type="button">100</button>
+
+<button id="preset1000" type="button">1000</button>
+
+<button id="clearTargetBtn" type="button">No Target</button>
+
+</div>
+
+<div class="customTarget">
+<input id="customTargetInput" type="number" inputmode="numeric" min="1" step="1" placeholder="Custom target" aria-label="Custom target">
+<button id="setCustomTargetBtn" type="button">Set</button>
+</div>
+
+<div id="toast" class="toast" role="status" aria-live="polite" aria-atomic="true"></div>
+
+</div>
+
+
+<script src="script.js"></script>
 
 </body>
 

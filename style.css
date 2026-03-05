@@ -1,62 +1,370 @@
-﻿body {
+﻿/* ---------- BODY ---------- */
+body {
     font-family: Arial, sans-serif;
     text-align: center;
-    background: #121212;
-    color: white;
+    background: var(--bg);
+    color: var(--text);
     margin: 0;
-    padding: 0;
+    padding: 24px 0;
+    min-height: 100vh;
 }
 
+:root {
+    --bg: radial-gradient(1200px 700px at 50% 0%, rgba(28, 175, 116, 0.08), rgba(255, 255, 255, 0)),
+        #f6f7fb;
+    --text: #0b1220;
+    --muted: rgba(11, 18, 32, 0.72);
+    --surface: rgba(255, 255, 255, 0.72);
+    --surface-strong: rgba(255, 255, 255, 0.92);
+    --border: rgba(11, 18, 32, 0.12);
+    --shadow: 0 18px 55px rgba(11, 18, 32, 0.12);
+    --shadow-soft: 0 10px 26px rgba(11, 18, 32, 0.12);
+    --shadow-hover: 0 18px 44px rgba(11, 18, 32, 0.16);
+    --primary: #16a34a;
+    --primary-2: #22c55e;
+    --danger: #ef4444;
+    --control: rgba(255, 255, 255, 0.92);
+    --radius: 16px;
+}
+
+body.dark {
+    --bg: radial-gradient(1200px 700px at 50% 0%, rgba(34, 197, 94, 0.12), rgba(0, 0, 0, 0)),
+        #0b0f17;
+    --text: #f2f5ff;
+    --muted: rgba(242, 245, 255, 0.75);
+    --surface: rgba(255, 255, 255, 0.06);
+    --surface-strong: rgba(255, 255, 255, 0.09);
+    --border: rgba(255, 255, 255, 0.10);
+    --shadow: 0 18px 55px rgba(0, 0, 0, 0.55);
+    --shadow-soft: 0 10px 26px rgba(0, 0, 0, 0.40);
+    --shadow-hover: 0 18px 44px rgba(0, 0, 0, 0.48);
+    --control: rgba(255, 255, 255, 0.12);
+}
+
+/* ---------- CONTAINER ---------- */
 .container {
-    margin-top: 120px;
+    margin-top: 10px;
+    padding: 22px 18px;
+    max-width: 560px;
+    margin-left: auto;
+    margin-right: auto;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 22px;
+    box-shadow: var(--shadow);
+    backdrop-filter: blur(10px);
 }
 
+/* ---------- TITLE ---------- */
 h1 {
-    font-size: 32px;
-    margin-bottom: 30px;
+    font-size: 28px;
+    margin: 0 0 18px;
 }
 
+/* ---------- COUNTER ---------- */
 #counter {
-    font-size: 90px;
+    font-size: 84px;
     font-weight: bold;
-    margin: 40px;
+    margin: 18px 0 10px;
 }
 
+#targetStatus {
+    margin-top: 0;
+    min-height: 22px;
+    opacity: 0.95;
+    color: var(--muted);
+}
+
+/* ---------- BUTTON BASE ---------- */
 button {
-    padding: 18px 30px;
-    font-size: 20px;
-    margin: 10px;
+    font-size: 18px;
     border: none;
-    border-radius: 10px;
+    border-radius: 12px;
     cursor: pointer;
+    padding: 15px 25px;
+    transition: all 0.2s ease;
+    -webkit-tap-highlight-color: transparent;
+    box-shadow: var(--shadow-soft);
+    background: var(--control);
+    color: var(--text);
+    position: relative;
+    overflow: hidden;
+    border: 1px solid var(--border);
 }
 
-#countBtn {
-    background: #27ae60;
-    color: white;
+button::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(255, 255, 255, 0.22);
+    opacity: 0;
+    pointer-events: none;
 }
 
-#resetBtn {
-    background: #e74c3c;
-    color: white;
+body.dark button::after {
+    background: rgba(255, 255, 255, 0.18);
 }
 
-#modeBtn {
-    background: #444;
-    color: white;
+button.tap-feedback::after {
+    animation: tapFlash 260ms ease-out;
+}
+
+@keyframes tapFlash {
+    0% {
+        opacity: 0;
+    }
+    35% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+button:focus-visible {
+    outline: 3px solid rgba(22, 163, 74, 0.55);
+    outline-offset: 3px;
+}
+
+body.dark button:focus-visible {
+    outline: 3px solid rgba(255, 255, 255, 0.65);
 }
 
 button:hover {
-    opacity: 0.9;
+    transform: scale(1.05);
+    opacity: 0.95;
+    box-shadow: var(--shadow-hover);
 }
 
+button:active {
+    transform: scale(0.98);
+    box-shadow: var(--shadow-soft);
+}
+
+button:disabled {
+    opacity: 0.55;
+    cursor: not-allowed;
+    transform: none;
+}
+
+/* ---------- CONTROLS ROW ---------- */
+.controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    margin-top: 16px;
+    flex-wrap: wrap;
+}
+
+.settings {
+    margin-top: 14px;
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.toggle {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 14px;
+    border-radius: var(--radius);
+    background: var(--surface-strong);
+    border: 1px solid var(--border);
+    box-shadow: var(--shadow-soft);
+    user-select: none;
+}
+
+.toggle input {
+    width: 18px;
+    height: 18px;
+}
+
+/* ---------- BIG COUNT BUTTON ---------- */
+#countBtn {
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 30% 30%, var(--primary-2), var(--primary));
+    color: white;
+    font-size: 32px;
+    font-weight: bold;
+    box-shadow: 0 22px 60px rgba(34, 197, 94, 0.25), var(--shadow);
+}
+
+/* ---------- DECREASE BUTTON ---------- */
+#minusBtn {
+    background: var(--control);
+    color: var(--text);
+    border-radius: var(--radius);
+    width: 80px;
+    height: 56px;
+    padding: 0;
+    font-size: 22px;
+}
+
+/* ---------- RESET BUTTON ---------- */
+#resetBtn {
+    background: linear-gradient(180deg, #ff5a4a, var(--danger));
+    color: white;
+    height: 56px;
+    border-radius: 999px;
+    padding: 0 22px;
+}
+
+/* ---------- MODE BUTTON ---------- */
+#modeBtn {
+    background: var(--control);
+    color: var(--text);
+    height: 56px;
+    border-radius: 999px;
+    padding: 0 22px;
+}
+
+/* ---------- PRESET TARGET BUTTONS ---------- */
+.presets {
+    margin-top: 16px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.customTarget {
+    margin-top: 14px;
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+#customTargetInput {
+    height: 46px;
+    width: 170px;
+    border: none;
+    border-radius: 999px;
+    padding: 0 16px;
+    background: var(--control);
+    color: var(--text);
+    box-shadow: var(--shadow-soft);
+}
+
+body.dark #customTargetInput {
+    background: var(--surface-strong);
+    color: var(--text);
+}
+
+#customTargetInput::placeholder {
+    color: var(--muted);
+}
+
+body.dark #customTargetInput::placeholder {
+    color: var(--muted);
+}
+
+#setCustomTargetBtn {
+    height: 46px;
+    border-radius: 999px;
+    padding: 0 18px;
+    background: var(--control);
+    color: var(--text);
+}
+
+.presets button {
+    background: var(--surface-strong);
+    color: var(--text);
+    min-width: 84px;
+    border-radius: 999px;
+    padding: 12px 18px;
+    border: 1px solid var(--border);
+    box-shadow: var(--shadow-soft);
+}
+
+.presets button.active {
+    background: linear-gradient(180deg, rgba(34, 197, 94, 0.16), rgba(34, 197, 94, 0.08));
+    border: 1px solid rgba(34, 197, 94, 0.35);
+    box-shadow: 0 16px 40px rgba(34, 197, 94, 0.20), var(--shadow-soft);
+}
+
+#clearTargetBtn {
+    background: var(--control);
+    color: var(--text);
+    border: 1px solid var(--border);
+    box-shadow: var(--shadow-soft);
+}
+
+#clearTargetBtn.active {
+    background: rgba(34, 197, 94, 0.10);
+    border: 1px solid rgba(34, 197, 94, 0.28);
+}
+
+.toast {
+    position: fixed;
+    left: 50%;
+    bottom: 22px;
+    transform: translateX(-50%);
+    background: rgba(11, 18, 32, 0.92);
+    color: #ffffff;
+    padding: 12px 14px;
+    border-radius: 12px;
+    min-width: 200px;
+    max-width: min(520px, calc(100vw - 32px));
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s ease;
+}
+
+body.dark .toast {
+    background: rgba(11, 18, 32, 0.92);
+    color: #ffffff;
+    box-shadow: var(--shadow-soft);
+}
+
+.toast.show {
+    opacity: 1;
+}
+
+/* ---------- MOBILE RESPONSIVE ---------- */
 @media(max-width:600px) {
 
     #counter {
-        font-size: 70px;
+        font-size: 66px;
     }
 
+    #countBtn {
+        width: 110px;
+        height: 110px;
+        font-size: 26px;
+    }
+
+    .controls {
+        flex-direction: column;
+    }
+
+    #minusBtn,
+    #resetBtn,
+    #modeBtn {
+        width: min(320px, calc(100vw - 48px));
+    }
+
+    .settings {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .presets button {
+        width: 70px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
     button {
-        width: 80%;
+        transition: none;
+    }
+
+    button:hover {
+        transform: none;
     }
 }
