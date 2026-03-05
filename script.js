@@ -23,6 +23,7 @@ const countBtn = document.getElementById("countBtn");
 const minusBtn = document.getElementById("minusBtn");
 const resetBtn = document.getElementById("resetBtn");
 const modeBtn = document.getElementById("modeBtn");
+
 const toastEl = document.getElementById("toast");
 const targetStatusEl = document.getElementById("targetStatus");
 const vibrationToggle = document.getElementById("vibrationToggle");
@@ -38,6 +39,24 @@ const customTargetInput = document.getElementById("customTargetInput");
 const setCustomTargetBtn = document.getElementById("setCustomTargetBtn");
 
 let toastTimer = null;
+
+let lastCountBtnTouchEnd = 0;
+if (countBtn) {
+    countBtn.addEventListener(
+        "touchend",
+        (e) => {
+            const now = Date.now();
+            if (now - lastCountBtnTouchEnd <= 300) {
+                e.preventDefault();
+            }
+            lastCountBtnTouchEnd = now;
+        },
+        { passive: false }
+    );
+}
+
+const vibrationSupported = !!(navigator && typeof navigator.vibrate === "function");
+let vibrationUnsupportedToastShown = false;
 
 function showToast(message) {
     if (!toastEl) {
@@ -57,6 +76,10 @@ function showToast(message) {
 }
 
 function safeVibrate(pattern) {
+    if (!vibrationSupported) {
+        return;
+    }
+
     if (!settings.vibrationEnabled) {
         return;
     }
@@ -203,13 +226,36 @@ function setTarget(num) {
 // Display initial count
 loadSettings();
 
+if (!vibrationSupported) {
+    settings.vibrationEnabled = false;
+    saveSettings();
+}
+
 counter.innerText = count;
 updateCountUI();
 updatePresetActiveState();
 
 if (vibrationToggle) {
     vibrationToggle.checked = !!settings.vibrationEnabled;
+
+    if (!vibrationSupported) {
+        vibrationToggle.checked = false;
+        vibrationToggle.disabled = true;
+    }
+
     vibrationToggle.addEventListener("change", () => {
+        if (!vibrationSupported) {
+            vibrationToggle.checked = false;
+            settings.vibrationEnabled = false;
+            saveSettings();
+
+            if (!vibrationUnsupportedToastShown) {
+                showToast("Vibration not supported on this device");
+                vibrationUnsupportedToastShown = true;
+            }
+            return;
+        }
+
         settings.vibrationEnabled = vibrationToggle.checked;
         saveSettings();
         showToast(settings.vibrationEnabled ? "Vibration on" : "Vibration off");

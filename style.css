@@ -7,6 +7,7 @@ body {
     margin: 0;
     padding: 24px 0;
     min-height: 100vh;
+    -webkit-text-size-adjust: 100%;
 }
 
 :root {
@@ -90,6 +91,18 @@ button {
     position: relative;
     overflow: hidden;
     border: 1px solid var(--border);
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+}
+
+.toggle,
+.presets button,
+#resetBtn,
+#minusBtn,
+#modeBtn,
+#setCustomTargetBtn {
+    touch-action: manipulation;
 }
 
 button::after {
@@ -192,6 +205,7 @@ button:disabled {
     font-size: 32px;
     font-weight: bold;
     box-shadow: 0 22px 60px rgba(34, 197, 94, 0.25), var(--shadow);
+    touch-action: manipulation;
 }
 
 /* ---------- DECREASE BUTTON ---------- */
