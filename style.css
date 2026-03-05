@@ -1,45 +1,62 @@
-﻿body{
-
-font-family:Arial;
-text-align:center;
-background:#f4f4f4;
-color:black;
-
+﻿body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    background: #121212;
+    color: white;
+    margin: 0;
+    padding: 0;
 }
 
-.container{
-
-margin-top:100px;
-
+.container {
+    margin-top: 120px;
 }
 
-#counter{
-
-font-size:70px;
-margin:20px;
-
+h1 {
+    font-size: 32px;
+    margin-bottom: 30px;
 }
 
-button{
-
-padding:15px;
-font-size:18px;
-margin:10px;
-border:none;
-border-radius:8px;
-
+#counter {
+    font-size: 90px;
+    font-weight: bold;
+    margin: 40px;
 }
 
-.dark{
-
-background:#121212;
-color:white;
-
+button {
+    padding: 18px 30px;
+    font-size: 20px;
+    margin: 10px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
 }
 
-.dark button{
+#countBtn {
+    background: #27ae60;
+    color: white;
+}
 
-background:#333;
-color:white;
+#resetBtn {
+    background: #e74c3c;
+    color: white;
+}
 
+#modeBtn {
+    background: #444;
+    color: white;
+}
+
+button:hover {
+    opacity: 0.9;
+}
+
+@media(max-width:600px) {
+
+    #counter {
+        font-size: 70px;
+    }
+
+    button {
+        width: 80%;
+    }
 }
