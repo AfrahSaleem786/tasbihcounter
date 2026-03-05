@@ -329,33 +329,103 @@ body.dark .toast {
 /* ---------- MOBILE RESPONSIVE ---------- */
 @media(max-width:600px) {
 
+    body {
+        padding: 12px 0;
+    }
+
+    .container {
+        padding: 16px 12px;
+        border-radius: 18px;
+    }
+
+    h1 {
+        font-size: 22px;
+        margin: 0 0 12px;
+    }
+
     #counter {
-        font-size: 66px;
+        font-size: 58px;
+        margin: 14px 0 8px;
     }
 
     #countBtn {
-        width: 110px;
-        height: 110px;
-        font-size: 26px;
+        width: 96px;
+        height: 96px;
+        font-size: 24px;
     }
 
     .controls {
-        flex-direction: column;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-areas:
+            "minus mode"
+            "count count"
+            "reset reset";
+        align-items: center;
+        gap: 10px;
     }
 
-    #minusBtn,
-    #resetBtn,
+    #minusBtn {
+        grid-area: minus;
+        width: 100%;
+        height: 48px;
+    }
+
     #modeBtn {
-        width: min(320px, calc(100vw - 48px));
+        grid-area: mode;
+        width: 100%;
+        height: 48px;
+        padding: 0 18px;
+    }
+
+    #countBtn {
+        grid-area: count;
+        justify-self: center;
+    }
+
+    #resetBtn {
+        grid-area: reset;
+        width: 100%;
+        height: 48px;
+        padding: 0 18px;
     }
 
     .settings {
-        flex-direction: column;
-        align-items: center;
+        margin-top: 10px;
+        gap: 10px;
+    }
+
+    .toggle {
+        padding: 8px 12px;
+        border-radius: 14px;
+    }
+
+    .presets {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 10px;
     }
 
     .presets button {
-        width: 70px;
+        min-width: 0;
+        width: 100%;
+        padding: 12px 12px;
+    }
+
+    .customTarget {
+        display: grid;
+        grid-template-columns: 1fr auto;
+        gap: 10px;
+        margin-top: 10px;
+    }
+
+    #customTargetInput {
+        width: 100%;
+        height: 44px;
+    }
+
+    #setCustomTargetBtn {
+        height: 44px;
     }
 }
 
