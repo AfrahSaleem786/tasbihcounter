@@ -40,21 +40,6 @@ const setCustomTargetBtn = document.getElementById("setCustomTargetBtn");
 
 let toastTimer = null;
 
-let lastCountBtnTouchEnd = 0;
-if (countBtn) {
-    countBtn.addEventListener(
-        "touchend",
-        (e) => {
-            const now = Date.now();
-            if (now - lastCountBtnTouchEnd <= 300) {
-                e.preventDefault();
-            }
-            lastCountBtnTouchEnd = now;
-        },
-        { passive: false }
-    );
-}
-
 const vibrationSupported = !!(navigator && typeof navigator.vibrate === "function");
 let vibrationUnsupportedToastShown = false;
 
@@ -205,6 +190,7 @@ function setCustomTargetFromInput() {
 
     setTarget(num);
     customTargetInput.value = "";
+    customTargetInput.blur();
 }
 
 function setTarget(num) {
@@ -241,6 +227,11 @@ if (vibrationToggle) {
     if (!vibrationSupported) {
         vibrationToggle.checked = false;
         vibrationToggle.disabled = true;
+
+        const wrapper = vibrationToggle.closest ? vibrationToggle.closest(".toggle") : null;
+        if (wrapper) {
+            wrapper.style.display = "none";
+        }
     }
 
     vibrationToggle.addEventListener("change", () => {
