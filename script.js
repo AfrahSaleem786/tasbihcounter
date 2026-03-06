@@ -9,7 +9,6 @@ if (count === null) {
 
 let target = null;
 let settings = {
-    vibrationEnabled: true,
     stopAtTarget: false,
     theme: "dark"
 };
@@ -26,7 +25,6 @@ const modeBtn = document.getElementById("modeBtn");
 
 const toastEl = document.getElementById("toast");
 const targetStatusEl = document.getElementById("targetStatus");
-const vibrationToggle = document.getElementById("vibrationToggle");
 const stopAtTargetToggle = document.getElementById("stopAtTargetToggle");
 
 const preset33 = document.getElementById("preset33");
@@ -39,9 +37,6 @@ const customTargetInput = document.getElementById("customTargetInput");
 const setCustomTargetBtn = document.getElementById("setCustomTargetBtn");
 
 let toastTimer = null;
-
-const vibrationSupported = !!(navigator && typeof navigator.vibrate === "function");
-let vibrationUnsupportedToastShown = false;
 
 function showToast(message) {
     if (!toastEl) {
@@ -61,20 +56,7 @@ function showToast(message) {
 }
 
 function safeVibrate(pattern) {
-    if (!vibrationSupported) {
-        return;
-    }
-
-    if (!settings.vibrationEnabled) {
-        return;
-    }
-
-    if (navigator.vibrate) {
-        try {
-            navigator.vibrate(pattern);
-        } catch (e) {
-        }
-    }
+    return;
 }
 
 function loadSettings() {
@@ -212,46 +194,9 @@ function setTarget(num) {
 // Display initial count
 loadSettings();
 
-if (!vibrationSupported) {
-    settings.vibrationEnabled = false;
-    saveSettings();
-}
-
 counter.innerText = count;
 updateCountUI();
 updatePresetActiveState();
-
-if (vibrationToggle) {
-    vibrationToggle.checked = !!settings.vibrationEnabled;
-
-    if (!vibrationSupported) {
-        vibrationToggle.checked = false;
-        vibrationToggle.disabled = true;
-
-        const wrapper = vibrationToggle.closest ? vibrationToggle.closest(".toggle") : null;
-        if (wrapper) {
-            wrapper.style.display = "none";
-        }
-    }
-
-    vibrationToggle.addEventListener("change", () => {
-        if (!vibrationSupported) {
-            vibrationToggle.checked = false;
-            settings.vibrationEnabled = false;
-            saveSettings();
-
-            if (!vibrationUnsupportedToastShown) {
-                showToast("Vibration not supported on this device");
-                vibrationUnsupportedToastShown = true;
-            }
-            return;
-        }
-
-        settings.vibrationEnabled = vibrationToggle.checked;
-        saveSettings();
-        showToast(settings.vibrationEnabled ? "Vibration on" : "Vibration off");
-    });
-}
 
 if (stopAtTargetToggle) {
     stopAtTargetToggle.checked = !!settings.stopAtTarget;
@@ -385,7 +330,7 @@ document.addEventListener("keydown", (e) => {
     }
 });
 
-document.addEventListener("pointerdown", (e) => {
+function applyTapFeedback(e) {
     const btn = e.target && e.target.closest ? e.target.closest("button") : null;
     if (!btn) {
         return;
@@ -397,5 +342,9 @@ document.addEventListener("pointerdown", (e) => {
 
     setTimeout(() => {
         btn.classList.remove("tap-feedback");
-    }, 320);
-});
+    }, 420);
+}
+
+document.addEventListener("pointerdown", applyTapFeedback);
+document.addEventListener("touchstart", applyTapFeedback, { passive: true });
+document.addEventListener("mousedown", applyTapFeedback);

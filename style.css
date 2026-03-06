@@ -126,14 +126,17 @@ body.dark button::after {
 }
 
 button.tap-feedback::after {
-    animation: tapFlash 260ms ease-out;
+    animation: tapFlash 380ms ease-out;
 }
 
 @keyframes tapFlash {
     0% {
         opacity: 0;
     }
-    35% {
+    30% {
+        opacity: 1;
+    }
+    60% {
         opacity: 1;
     }
     100% {
