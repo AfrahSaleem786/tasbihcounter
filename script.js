@@ -36,6 +36,9 @@ const clearTargetBtn = document.getElementById("clearTargetBtn");
 const customTargetInput = document.getElementById("customTargetInput");
 const setCustomTargetBtn = document.getElementById("setCustomTargetBtn");
 
+const progressWrap = document.getElementById("progressWrap");
+const progressBar = document.getElementById("progressBar");
+
 let toastTimer = null;
 
 function showToast(message) {
@@ -111,6 +114,17 @@ function updateTargetStatus() {
 function updateCountUI() {
     counter.innerText = count;
     updateTargetStatus();
+
+    if (progressWrap && progressBar) {
+        if (!target) {
+            progressWrap.style.display = "none";
+            progressBar.style.width = "0%";
+        } else {
+            progressWrap.style.display = "block";
+            const pct = Math.max(0, Math.min(100, (count / target) * 100));
+            progressBar.style.width = pct.toFixed(2) + "%";
+        }
+    }
 
     const reachedTarget = !!target && count >= target;
     countBtn.disabled = reachedTarget && settings.stopAtTarget;
@@ -228,9 +242,14 @@ function increaseCount() {
 
     // check target completion
     if (target && count === target) {
-
-        safeVibrate([60, 40, 60]);
         showToast(`${target} completed`);
+
+        if (countBtn) {
+            countBtn.classList.add("target-reached");
+            setTimeout(() => {
+                countBtn.classList.remove("target-reached");
+            }, 520);
+        }
 
     }
 }

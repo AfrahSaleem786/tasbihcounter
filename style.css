@@ -61,11 +61,11 @@ body.dark {
 /* ---------- CONTAINER ---------- */
 .container {
     margin-top: 10px;
-    padding: 22px 18px;
+    padding: 20px 18px;
     max-width: 560px;
     margin-left: auto;
     margin-right: auto;
-    background: var(--surface);
+    background: var(--surface-strong);
     border: 1px solid var(--border);
     border-radius: 22px;
     box-shadow: var(--shadow);
@@ -75,14 +75,36 @@ body.dark {
 /* ---------- TITLE ---------- */
 h1 {
     font-size: 28px;
-    margin: 0 0 18px;
+    margin: 0 0 14px;
 }
 
 /* ---------- COUNTER ---------- */
 #counter {
     font-size: 84px;
     font-weight: bold;
-    margin: 18px 0 10px;
+    margin: 14px 0 8px;
+}
+
+.progress {
+    width: min(420px, 100%);
+    height: 10px;
+    margin: 10px auto 0;
+    border-radius: 999px;
+    background: rgba(11, 18, 32, 0.10);
+    overflow: hidden;
+    border: 1px solid var(--border);
+}
+
+body.dark .progress {
+    background: rgba(255, 255, 255, 0.10);
+}
+
+.progressBar {
+    height: 100%;
+    width: 0%;
+    border-radius: 999px;
+    background: linear-gradient(90deg, var(--primary), var(--primary-2));
+    transition: width 160ms ease;
 }
 
 #targetStatus {
@@ -191,7 +213,7 @@ button:disabled {
     justify-content: center;
     align-items: center;
     gap: 12px;
-    margin-top: 16px;
+    margin-top: 14px;
     flex-wrap: wrap;
 }
 
@@ -246,11 +268,16 @@ button:disabled {
 
 /* ---------- RESET BUTTON ---------- */
 #resetBtn {
-    background: linear-gradient(180deg, #ff5a4a, var(--danger));
-    color: white;
+    background: transparent;
+    color: var(--danger);
+    border: 1px solid rgba(239, 68, 68, 0.45);
     height: 56px;
     border-radius: 999px;
     padding: 0 22px;
+}
+
+body.dark #resetBtn {
+    border: 1px solid rgba(239, 68, 68, 0.55);
 }
 
 /* ---------- MODE BUTTON ---------- */
@@ -328,9 +355,14 @@ body.dark #customTargetInput::placeholder {
 }
 
 .presets button.active {
-    background: linear-gradient(180deg, rgba(34, 197, 94, 0.16), rgba(34, 197, 94, 0.08));
-    border: 1px solid rgba(34, 197, 94, 0.35);
-    box-shadow: 0 16px 40px rgba(34, 197, 94, 0.20), var(--shadow-soft);
+    background: linear-gradient(180deg, rgba(34, 197, 94, 0.30), rgba(34, 197, 94, 0.14));
+    border: 1px solid rgba(34, 197, 94, 0.55);
+    box-shadow: 0 18px 44px rgba(34, 197, 94, 0.26), var(--shadow-soft);
+    font-weight: 700;
+}
+
+.presets button.active::before {
+    content: "✓ ";
 }
 
 #clearTargetBtn {
@@ -369,6 +401,25 @@ body.dark .toast {
 
 .toast.show {
     opacity: 1;
+}
+
+@keyframes targetPulse {
+    0% {
+        box-shadow: 0 22px 60px rgba(34, 197, 94, 0.25), var(--shadow);
+        transform: scale(1);
+    }
+    35% {
+        box-shadow: 0 26px 72px rgba(34, 197, 94, 0.42), var(--shadow);
+        transform: scale(1.06);
+    }
+    100% {
+        box-shadow: 0 22px 60px rgba(34, 197, 94, 0.25), var(--shadow);
+        transform: scale(1);
+    }
+}
+
+#countBtn.target-reached {
+    animation: targetPulse 520ms ease-out;
 }
 
 /* ---------- MOBILE RESPONSIVE ---------- */
@@ -435,8 +486,9 @@ body.dark .toast {
     #resetBtn {
         grid-area: reset;
         width: 100%;
-        height: 48px;
+        height: 44px;
         padding: 0 18px;
+        font-size: 16px;
     }
 
     .settings {
