@@ -5,9 +5,12 @@
 
     <meta charset="UTF-8">
 
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
     <link rel="icon" href="favicon.ico">
 
-    <meta name="google-site-verification" content="r3PItotl-3LgwsDCA1NLmUXFkApLHjNHbGMhXUKUolQ" />
+    <meta name="google-site-verification"
+          content="r3PItotl-3LgwsDCA1NLmUXFkApLHjNHbGMhXUKUolQ" />
 
     <meta name="description"
           content="Free online tasbih counter. Count SubhanAllah, Alhamdulillah, Allahu Akbar with digital tasbih counter. Works on mobile and desktop.">
@@ -21,72 +24,114 @@
 
     <link rel="stylesheet" href="style.css?v=20260306_1">
 
+    <link rel="canonical" href="https://tasbihcounteronline.com/">
+
+    <meta property="og:title" content="Tasbih Counter Online">
+    <meta property="og:description" content="Free online tasbih counter for daily dhikr">
+    <meta property="og:url" content="https://tasbihcounteronline.com">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Tasbih Counter Online">
+    <meta property="og:image" content="https://tasbihcounteronline.com/icon.png">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Tasbih Counter Online">
+    <meta name="twitter:description" content="Free online tasbih counter">
+    <meta name="twitter:image" content="https://tasbihcounteronline.com/icon.png">
+
 </head>
 
 
-    <body class="dark">
+<body class="dark">
 
-        <div class="container">
+    <div class="container">
 
-            <h1>📿 Online Tasbih Counter</h1>
+        <h1>📿 Online Tasbih Counter</h1>
 
-            <div id="counter">0</div>
+        <div id="counter">0</div>
 
-            <div id="targetStatus" aria-live="polite"></div>
+        <div id="targetStatus" aria-live="polite"></div>
 
-            <div id="progressWrap" class="progress" aria-hidden="true">
-                <div id="progressBar" class="progressBar"></div>
-            </div>
-
-
-            <!-- MAIN CONTROLS -->
-            <div class="controls">
-
-                <button id="minusBtn" aria-label="Decrease count">−</button>
-
-                <button id="countBtn" aria-label="Increase count">+1</button>
-
-                <button id="resetBtn" aria-label="Reset count">Reset</button>
-
-                <button id="modeBtn" aria-label="Toggle dark or light mode">Dark Mode</button>
-
-            </div>
-
-            <div class="settings">
-                <label class="toggle">
-                    <input id="stopAtTargetToggle" type="checkbox">
-                    <span>Stop at target</span>
-                </label>
-            </div>
-
-
-            <!-- PRESET TARGET BUTTONS -->
-            <div class="presets">
-
-                <button id="preset33" type="button">33</button>
-
-                <button id="preset99" type="button">99</button>
-
-                <button id="preset100" type="button">100</button>
-
-                <button id="preset1000" type="button">1000</button>
-
-                <button id="clearTargetBtn" type="button">No Target</button>
-
-            </div>
-
-            <div class="customTarget">
-                <input id="customTargetInput" type="number" inputmode="numeric" min="1" step="1" placeholder="Custom target" aria-label="Custom target">
-                <button id="setCustomTargetBtn" type="button">Set</button>
-            </div>
-
-            <div id="toast" class="toast" role="status" aria-live="polite" aria-atomic="true"></div>
-
+        <div id="progressWrap" class="progress" aria-hidden="true">
+            <div id="progressBar" class="progressBar"></div>
         </div>
 
 
-        <script src="script.js?v=20260306_1"></script>
+        <!-- MAIN CONTROLS -->
+        <div class="controls">
 
-    </body>
+            <button id="minusBtn" aria-label="Decrease count">−</button>
+
+            <button id="countBtn" aria-label="Increase count">+1</button>
+
+            <button id="resetBtn" aria-label="Reset count">Reset</button>
+
+            <button id="modeBtn" aria-label="Toggle dark or light mode">Dark Mode</button>
+
+        </div>
+
+        <div class="settings">
+            <label class="toggle">
+                <input id="stopAtTargetToggle" type="checkbox">
+                <span>Stop at target</span>
+            </label>
+        </div>
+
+
+        <!-- PRESET TARGET BUTTONS -->
+        <div class="presets">
+
+            <button id="preset33" type="button">33</button>
+
+            <button id="preset99" type="button">99</button>
+
+            <button id="preset100" type="button">100</button>
+
+            <button id="preset1000" type="button">1000</button>
+
+            <button id="clearTargetBtn" type="button">No Target</button>
+
+        </div>
+
+        <div class="customTarget">
+            <input id="customTargetInput" type="number" inputmode="numeric" min="1" step="1" placeholder="Custom target" aria-label="Custom target">
+            <button id="setCustomTargetBtn" type="button">Set</button>
+        </div>
+
+        <div id="toast" class="toast" role="status" aria-live="polite" aria-atomic="true"></div>
+
+    </div>
+
+    <div class="seo-text">
+
+        <h2>Free Online Tasbih Counter</h2>
+
+        <p>
+            Use this free online tasbih counter to keep track of your daily dhikr.
+            You can count SubhanAllah, Alhamdulillah, and Allahu Akbar easily using this digital tasbih counter.
+            This tasbih counter works on mobile and desktop without downloading any app.
+        </p>
+
+        <h2>How to use Tasbih Counter</h2>
+
+        <p>
+            Click the +1 button to increase count.
+            Set target like 33, 99, 100, or 1000.
+            Enable stop at target to get alert when dhikr completed.
+            Your count is saved automatically in browser.
+        </p>
+
+        <h2>Why use digital tasbih counter?</h2>
+
+        <p>
+            Online tasbih counter helps you perform dhikr anywhere.
+            No need for physical tasbih.
+            Works fast, simple, and free.
+        </p>
+
+    </div>
+
+    <script src="script.js?v=20260306_1"></script>
+
+</body>
 
 </html>

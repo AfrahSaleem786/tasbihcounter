@@ -540,3 +540,12 @@ body.dark .toast {
         transform: none;
     }
 }
+
+.seo-text {
+    max-width: 700px;
+    margin: 40px auto;
+    font-size: 16px;
+    line-height: 1.6;
+    text-align: left;
+    opacity: 0.9;
+}
