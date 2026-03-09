@@ -428,14 +428,14 @@ body.dark .toast {
     body {
         padding: 12px 0;
         min-height: 100svh;
-        overflow: hidden;
+        overflow-y: auto;
     }
 
     .container {
         padding: 16px 12px;
         border-radius: 18px;
-        max-height: calc(100svh - 24px);
-        overflow: hidden;
+        max-height: none;
+        overflow: visible;
     }
 
     h1 {
