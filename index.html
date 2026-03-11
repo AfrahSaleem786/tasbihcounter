@@ -3,50 +3,101 @@
 
 <head>
 
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Tasbih Counter Online – Free Digital Tasbih Counter (33, 99, 100, 1000)</title>
+
+    <meta name="description"
+          content="Free online Tasbih counter for daily dhikr. Count SubhanAllah, Alhamdulillah, Allahu Akbar using digital tasbih counter. Supports 33, 99, 100, 1000 counts. Works on mobile and desktop without app.">
+
+    <meta name="keywords"
+          content="tasbih counter, online tasbih counter, digital tasbih, dhikr counter, tasbeeh counter, zikr counter, tasbih online, tasbih 33 counter">
+
+    <meta name="robots" content="index, follow">
+
+    <meta name="application-name" content="Tasbih Counter Online">
+    <meta name="author" content="Tasbih Counter Online">
+
+    <link rel="canonical" href="https://tasbihcounteronline.com/">
+
+    <meta name="google-site-verification"
+          content="r3PItotl-3LgwsDCA1NLmUXFkApLHjNHbGMhXUKUolQ" />
+
+
+    <!-- favicon -->
+    <link rel="icon" href="/favicon.ico">
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="icon" type="image/png" href="/icon.png">
+
+
+    <!-- Open Graph -->
+    <meta property="og:title"
+          content="Tasbih Counter Online – Free Digital Tasbih Counter">
+
+    <meta property="og:description"
+          content="Free online tasbih counter for dhikr. Supports 33, 99, 100, 1000 counts. Works on mobile and desktop.">
+
+    <meta property="og:url"
+          content="https://tasbihcounteronline.com">
+
+    <meta property="og:type"
+          content="website">
+
+    <meta property="og:site_name"
+          content="Tasbih Counter Online">
+
+    <meta property="og:image"
+          content="https://tasbihcounteronline.com/icon.png">
+
+
+    <!-- Twitter preview -->
+    <meta name="twitter:card" content="summary_large_image">
+
+    <meta name="twitter:title"
+          content="Tasbih Counter Online">
+
+    <meta name="twitter:description"
+          content="Free online tasbih counter">
+
+    <meta name="twitter:image"
+          content="https://tasbihcounteronline.com/icon.png">
+
+
+    <!-- Schema -->
+    <script type="application/ld+json">
+        {
+          "@context": "https://schema.org",
+          "@type": "WebSite",
+          "name": "Tasbih Counter Online",
+          "alternateName": "Online Tasbih Counter",
+          "url": "https://tasbihcounteronline.com/",
+          "description": "Free online tasbih counter for dhikr. Supports 33, 99, 100, 1000.",
+          "inLanguage": "en",
+          "publisher": {
+            "@type": "Organization",
+            "name": "Tasbih Counter Online",
+            "logo": {
+              "@type": "ImageObject",
+              "url": "https://tasbihcounteronline.com/icon.png"
+            }
+          }
+        }
+    </script>
+
+
     <!-- Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-P2J8NR167V"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
         function gtag() { dataLayer.push(arguments); }
         gtag('js', new Date());
-
         gtag('config', 'G-P2J8NR167V');
     </script>
 
-    <meta charset="UTF-8">
 
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <link rel="icon" href="favicon.ico">
-
-    <meta name="google-site-verification"
-          content="r3PItotl-3LgwsDCA1NLmUXFkApLHjNHbGMhXUKUolQ" />
-
-    <meta name="description"
-          content="Free online tasbih counter. Count SubhanAllah, Alhamdulillah, Allahu Akbar with digital tasbih counter. Works on mobile and desktop.">
-
-    <meta name="keywords"
-          content="tasbih counter, online tasbih counter, dhikr counter, digital tasbih, tasbeeh counter, zikr counter">
-
-    <meta name="robots" content="index, follow">
-
-    <title>Tasbih Counter Online – Free Digital Tasbih Counter for Dhikr</title>
-
-    <link rel="stylesheet" href="style.css?v=20260306_1">
-
-    <link rel="canonical" href="https://tasbihcounteronline.com/">
-
-    <meta property="og:title" content="Tasbih Counter Online">
-    <meta property="og:description" content="Free online tasbih counter for daily dhikr">
-    <meta property="og:url" content="https://tasbihcounteronline.com">
-    <meta property="og:type" content="website">
-    <meta property="og:site_name" content="Tasbih Counter Online">
-    <meta property="og:image" content="https://tasbihcounteronline.com/icon.png">
-
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Tasbih Counter Online">
-    <meta name="twitter:description" content="Free online tasbih counter">
-    <meta name="twitter:image" content="https://tasbihcounteronline.com/icon.png">
+    <link rel="stylesheet" href="style.css?v=20260311_1">
 
 </head>
 
@@ -55,92 +106,105 @@
 
     <div class="container">
 
-        <h1>📿 Online Tasbih Counter</h1>
+        <h1>📿 Tasbih Counter Online – Digital Dhikr Counter</h1>
 
         <div id="counter">0</div>
 
-        <div id="targetStatus" aria-live="polite"></div>
+        <div id="targetStatus"></div>
 
-        <div id="progressWrap" class="progress" aria-hidden="true">
+        <div id="progressWrap" class="progress">
             <div id="progressBar" class="progressBar"></div>
         </div>
 
 
-        <!-- MAIN CONTROLS -->
         <div class="controls">
 
-            <button id="minusBtn" aria-label="Decrease count">−</button>
+            <button id="minusBtn">−</button>
 
-            <button id="countBtn" aria-label="Increase count">+1</button>
+            <button id="countBtn">+1</button>
 
-            <button id="resetBtn" aria-label="Reset count">Reset</button>
+            <button id="resetBtn">Reset</button>
 
-            <button id="modeBtn" aria-label="Toggle dark or light mode">Dark Mode</button>
+            <button id="modeBtn">Dark Mode</button>
 
         </div>
 
+
         <div class="settings">
-            <label class="toggle">
+            <label>
                 <input id="stopAtTargetToggle" type="checkbox">
-                <span>Stop at target</span>
+                Stop at target
             </label>
         </div>
 
 
-        <!-- PRESET TARGET BUTTONS -->
         <div class="presets">
 
-            <button id="preset33" type="button">33</button>
+            <button id="preset33">33</button>
 
-            <button id="preset99" type="button">99</button>
+            <button id="preset99">99</button>
 
-            <button id="preset100" type="button">100</button>
+            <button id="preset100">100</button>
 
-            <button id="preset1000" type="button">1000</button>
+            <button id="preset1000">1000</button>
 
-            <button id="clearTargetBtn" type="button">No Target</button>
+            <button id="clearTargetBtn">No Target</button>
 
         </div>
+
 
         <div class="customTarget">
-            <input id="customTargetInput" type="number" inputmode="numeric" min="1" step="1" placeholder="Custom target" aria-label="Custom target">
-            <button id="setCustomTargetBtn" type="button">Set</button>
+
+            <input id="customTargetInput"
+                   type="number"
+                   placeholder="Custom target">
+
+            <button id="setCustomTargetBtn">Set</button>
+
         </div>
 
-        <div id="toast" class="toast" role="status" aria-live="polite" aria-atomic="true"></div>
+        <div id="toast"></div>
 
     </div>
 
+
+
+    <!-- SEO TEXT -->
+
     <div class="seo-text">
 
-        <h2>Free Online Tasbih Counter</h2>
+        <h2>Online Tasbih Counter Free – Digital Tasbeeh Counter</h2>
 
         <p>
-            Use this free online tasbih counter to keep track of your daily dhikr.
-            You can count SubhanAllah, Alhamdulillah, and Allahu Akbar easily using this digital tasbih counter.
-            This tasbih counter works on mobile and desktop without downloading any app.
+            This online tasbih counter supports 33, 99, 100 and 1000 counts.
+            You can use this digital tasbih counter for SubhanAllah,
+            Alhamdulillah and Allahu Akbar dhikr.
+            Best free tasbih counter online for mobile and desktop.
         </p>
+
 
         <h2>How to use Tasbih Counter</h2>
 
         <p>
-            Click the +1 button to increase count.
-            Set target like 33, 99, 100, or 1000.
-            Enable stop at target to get alert when dhikr completed.
-            Your count is saved automatically in browser.
+            Click +1 to increase count.
+            Set target 33, 99, 100, or 1000.
+            Enable stop at target to get alert.
+            Your count is saved automatically.
         </p>
 
-        <h2>Why use digital tasbih counter?</h2>
+
+        <h2>Digital Dhikr Counter Online</h2>
 
         <p>
-            Online tasbih counter helps you perform dhikr anywhere.
-            No need for physical tasbih.
-            Works fast, simple, and free.
+            Free dhikr counter online without download.
+            This tasbeeh counter saves count automatically.
+            Simple and fast tasbih counter for daily zikr.
         </p>
 
     </div>
 
-    <script src="script.js?v=20260306_1"></script>
+
+    <script src="script.js?v=20260311_1"></script>
 
 </body>
 
